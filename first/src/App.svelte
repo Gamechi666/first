@@ -1,22 +1,34 @@
 <script lang="ts">
+
     import First from "./first.svelte";
     export let name: string;
-    let count:number[] = [];
+    let sum:number = 0;//let sum = 0   perseInt(sum)
+    let texts:string[] = [];
 	//4行目を配列にして、6、7、11行目を渡されたindex番目の値を変更
-    const plus = (index) => { count[index] += 1 };
-    const minus = (index) => { count[index] -= 1 };
-    $: if(count < 0){
-        count += 1;
+    const plus = (form) => { 
+        form.count += 1;
+        forms = forms;
+        sum = forms.reduce((pre,cur)=>pre+cur.count,0);   
     };
-    const zero = (index) => { count[index] = 0 };
+    const minus = (form) => { 
+        if(form.count > 0)form.count -= 1;
+        forms = forms;
+        sum = forms.reduce((pre,cur)=>pre+cur.count,0); 
+    };
+    const zero = (form) => { 
+        form.count = 0 
+        forms = forms;
+        sum = forms.reduce((pre,cur)=>pre+cur.count,0); 
+    };
     let text: string = 'new';
     let forms = [
-        {text:"new",count:0},
+        {text: "new", count: 0},
     ]
 	// increaseとdecreaseでcountの要素数を変更
     function increase() {
-        forms.push( {text ,count:0} ); 
+        forms.push({ text, count: 0 });
         forms = forms;
+        console.log(forms[1]);
     };
     const decrease = (index) => {
     	forms = forms.filter((_, i) => i !== index);
@@ -29,15 +41,15 @@
     
         {#each forms as form,index}
         
-            <div  class="form">
+            <div class="form">
                 <div style="float:left">
                     <input type="text" class="input" placeholder="new" bind:value = {form.text}>
                 </div>
                 <div style="text-align:center"><p class="number" >{form.count}</p></div>
                 <div class="func">
-                    <button on:click={() => plus(index)} style="background:#F56565" tabindex="-1">+</button>
-                    <button on:click={() => minus(index)} style="background:#4299E1" tabindex="-1">-</button>
-                    <button on:click={() => zero(index)} style="background:#ECC94B" tabindex="-1">0</button>
+                    <button on:click={() => plus(form)} style="background:#F56565" tabindex="-1">+</button>
+                    <button on:click={() => minus(form)} style="background:#4299E1" tabindex="-1">-</button>
+                    <button on:click={() => zero(form)} style="background:#ECC94B" tabindex="-1">0</button>
                     <button style="border-color:transparent" on:click= {() => decrease(index)} >x</button>
                 </div>
             </div>
@@ -46,8 +58,8 @@
     
 
     <button type="button" class="addButton" on:click= {increase} >new counter</button>
-    <p style="margin:0">title list:{forms}</p>
-    <p style="margin:0">sum of count:</p>
+    <p style="margin:0">title list:{}</p>
+    <p style="margin:0">sum of count:{sum}</p>
     <h1>Hello {name}!</h1>
     <First/>
     
