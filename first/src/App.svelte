@@ -23,9 +23,8 @@
     ]
     const onChangeInput = (index, form) => {
         texts[index] = form.text;
-        console.log(form.text);
         texts = texts;
-    }
+    };
     function increase() {
         forms.push({ text:"new", count: 0 });
         forms = forms;
@@ -48,9 +47,7 @@
 
 <main>
     <p style="font-size:4em" class="subject">Multiple Counter</p>
-    
         {#each forms as form,index}
-        
             <div class="form">
                 <div style="float:left">
                     <input on:keyup={() => onChangeInput(index, form)} type="text" class="input" bind:value = {form.text}>
@@ -63,7 +60,6 @@
                     <button style="border-color:transparent" on:click= {() => decrease(index, form)}>x</button>
                 </div>
             </div>
-        
         {/each}
     
     <input type="button" value = "new counter" class="addButton" on:click= {increase} >
