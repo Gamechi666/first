@@ -67,14 +67,6 @@ var app = (function () {
     function set_input_value(input, value) {
         input.value = value == null ? '' : value;
     }
-    function set_style(node, key, value, important) {
-        if (value === null) {
-            node.style.removeProperty(key);
-        }
-        else {
-            node.style.setProperty(key, value, important ? 'important' : '');
-        }
-    }
     function custom_event(type, detail, bubbles = false) {
         const e = document.createEvent('CustomEvent');
         e.initCustomEvent(type, bubbles, false, detail);
@@ -466,26 +458,26 @@ var app = (function () {
     			button3 = element("button");
     			button3.textContent = "x";
     			attr_dev(input, "type", "text");
-    			attr_dev(input, "class", "input svelte-kbiauv");
-    			add_location(input, file, 52, 20, 1282);
-    			set_style(div0, "float", "left");
-    			add_location(div0, file, 51, 16, 1237);
-    			attr_dev(p, "class", "number svelte-kbiauv");
-    			add_location(p, file, 54, 47, 1455);
-    			set_style(div1, "text-align", "center");
-    			add_location(div1, file, 54, 16, 1424);
-    			set_style(button0, "background", "#F56565");
-    			add_location(button0, file, 56, 20, 1552);
-    			set_style(button1, "background", "#4299E1");
-    			add_location(button1, file, 57, 20, 1647);
-    			set_style(button2, "background", "#ECC94B");
-    			add_location(button2, file, 58, 20, 1743);
-    			set_style(button3, "border-color", "transparent");
-    			add_location(button3, file, 59, 20, 1838);
-    			attr_dev(div2, "class", "func svelte-kbiauv");
-    			add_location(div2, file, 55, 16, 1513);
-    			attr_dev(div3, "class", "form svelte-kbiauv");
-    			add_location(div3, file, 50, 12, 1202);
+    			attr_dev(input, "class", "input");
+    			add_location(input, file, 52, 20, 1259);
+    			attr_dev(div0, "class", "input_div");
+    			add_location(div0, file, 51, 16, 1215);
+    			attr_dev(p, "class", "number");
+    			add_location(p, file, 54, 39, 1424);
+    			attr_dev(div1, "class", "count_div");
+    			add_location(div1, file, 54, 16, 1401);
+    			attr_dev(button0, "class", "plus_count");
+    			add_location(button0, file, 56, 20, 1521);
+    			attr_dev(button1, "class", "minus_count");
+    			add_location(button1, file, 57, 20, 1607);
+    			attr_dev(button2, "class", "zero_reset");
+    			add_location(button2, file, 58, 20, 1695);
+    			attr_dev(button3, "class", "delete");
+    			add_location(button3, file, 59, 20, 1781);
+    			attr_dev(div2, "class", "func");
+    			add_location(div2, file, 55, 16, 1482);
+    			attr_dev(div3, "class", "form");
+    			add_location(div3, file, 50, 12, 1180);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div3, anchor);
@@ -591,18 +583,14 @@ var app = (function () {
     			p2 = element("p");
     			t7 = text("sum of count:");
     			t8 = text(/*sum*/ ctx[0]);
-    			set_style(p0, "font-size", "4em");
-    			attr_dev(p0, "class", "subject svelte-kbiauv");
+    			attr_dev(p0, "class", "subject");
     			add_location(p0, file, 48, 4, 1092);
     			attr_dev(input, "type", "button");
     			input.value = "new counter";
-    			attr_dev(input, "class", "addButton svelte-kbiauv");
-    			add_location(input, file, 64, 4, 1997);
-    			set_style(p1, "margin", "0");
-    			add_location(p1, file, 65, 4, 2085);
-    			set_style(p2, "margin", "0");
-    			add_location(p2, file, 66, 4, 2132);
-    			attr_dev(main, "class", "svelte-kbiauv");
+    			attr_dev(input, "class", "addButton");
+    			add_location(input, file, 64, 4, 1922);
+    			add_location(p1, file, 65, 4, 2010);
+    			add_location(p2, file, 66, 4, 2040);
     			add_location(main, file, 47, 0, 1081);
     		},
     		l: function claim(nodes) {

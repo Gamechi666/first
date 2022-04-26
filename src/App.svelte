@@ -46,29 +46,30 @@
 </script>
 
 <main>
-    <p style="font-size:4em" class="subject">Multiple Counter</p>
+    <p class="subject">Multiple Counter</p>
         {#each forms as form,index}
             <div class="form">
-                <div style="float:left">
+                <div class="input_div">
                     <input on:keyup={() => onChangeInput(index, form)} type="text" class="input" bind:value = {form.text}>
                 </div>
-                <div style="text-align:center"><p class="number" >{form.count}</p></div>
+                <div class="count_div"><p class="number" >{form.count}</p></div>
                 <div class="func">
-                    <button on:click={() => plus(form)} style="background:#F56565" >+</button>
-                    <button on:click={() => minus(form)} style="background:#4299E1" >-</button>
-                    <button on:click={() => zero(form)} style="background:#ECC94B" >0</button>
-                    <button style="border-color:transparent" on:click= {() => decrease(index, form)}>x</button>
+                    <button on:click={() => plus(form)} class="plus_count">+</button>
+                    <button on:click={() => minus(form)} class="minus_count">-</button>
+                    <button on:click={() => zero(form)} class="zero_reset">0</button>
+                    <button class="delete" on:click= {() => decrease(index, form)}>x</button>
                 </div>
             </div>
         {/each}
     
     <input type="button" value = "new counter" class="addButton" on:click= {increase} >
-    <p style="margin:0">title list:{texts}</p>
-    <p style="margin:0">sum of count:{sum}</p>
+    <p>title list:{texts}</p>
+    <p>sum of count:{sum}</p>
     
 </main>
 
-<style>
+<style global lang="postcss">
+    
     main {
         text-align: center;
         padding: 1em;
@@ -82,6 +83,9 @@
         padding-left: 50px;
         
     }
+    p{
+        margin:0
+    }
     div.form {
         width: 400px;
         height: 40px;
@@ -92,6 +96,13 @@
         margin-top: 1%;
         display: flex;
     }
+    div.count_div{
+        text-align:center
+    }
+    div.input_div{
+        float:left
+    }
+    
     input.addButton{
         margin-top: 1%;
         width: 400px;
@@ -115,8 +126,25 @@
         margin-left: auto;
         padding-top: 4px;
     }
+    button.plus_count{
+        background:#F56565
+    }
+    button.minus_count{
+        background:#4299E1
+    }
+    button.zero_reset{
+        background:#ECC94B
+    }
+    button.delete{
+        border-color:transparent
+    }
 
-    @media (min-width: 640px) {
+    @media (min-width: 520px) {
+        main {
+            max-width: none;
+        }
+    }
+    @media (max-width: 519px) {
         main {
             max-width: none;
         }
